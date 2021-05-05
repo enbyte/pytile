@@ -1,2 +1,2 @@
 # pytile
-Pytile Holder
+A simple tilemap library, written in pygame
