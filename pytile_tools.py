@@ -1,5 +1,5 @@
 import os
-
+import copy
 
 ###################
 # Matrix Tools
@@ -14,7 +14,7 @@ def Matrix(what,h,l):
     for x in range(l):
         row_build.append(what)
     for i in range(h):
-        build.append(row_build)
+        build.append(copy.deepcopy(row_build))
     return build
 
 def replace_mat_obj(mat, h, l, what):

@@ -268,10 +268,10 @@ class Tilemap():
         self.BLOCK_SIZE = BLOCK_SIZE
         self.B_S = BLOCK_SIZE
         if C_MAT_PROVIDE_TYPE == 'mat':
-            self.mat = numpy.array(matrix)
-            self.drawmat = numpy.array(matrix)
+            self.mat = matrix
+            self.drawmat = matrix
         else:
-            self.mat = numpy.array(tools.load_tmap_mat(matrix,  self))
+            self.mat = tools.load_tmap_mat(matrix, self)
             self.drawmat = self.mat
         self._tdict = C_TILE_FUNC_DICT
     def getIfPointContained(x, y):
@@ -420,7 +420,7 @@ if __name__ == "__main__":
     imgld = ImageLoader(name="imgloader0")
     now = time.time()
     
-    print(now - now0        )
+    print(now - now0)
     
     DirtImage = imgld.LoadImage(path + 'dirt_1.png')
     bg = imgld.LoadImage(path + 'pixel_bg.png')
@@ -475,7 +475,7 @@ if __name__ == "__main__":
     creg.addSidedSpecialTilemapCollision(player, t, (1,2,3,4), (present,), lambda: get_present(t.getTilePoint(player.x, player.y)[1], t.getTilePoint(player.x, player.y)[0]))
     
     
-    print(mask_col.genColMask(t, includes=[0]))
+    print(mask_col.genColMask(t.mat, edge_col_tiles=[0], ignore_tiles=[0]))
     while running:
         player.canceledYvelThisFrame = False
         setThisFrame = False
