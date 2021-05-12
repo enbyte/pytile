@@ -6,6 +6,7 @@ import sys
 import math
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename, asksaveasfilename
+from tkinter.simpledialog import askinteger
 import mask_col
 import time
 import copy
@@ -501,6 +502,10 @@ if __name__ == "__main__":
                 t.x += 3
         if keys[pygame.K_q]:
             running = False
+        if keys[pygame.K_n]:
+            width, height = askinteger("New level", "Width?"), askinteger("New level", "Height?")
+            t.mat = tools.Matrix(0, width, height)
+        
         if keys[pygame.K_c]:
             for row_index in range(len(t.mat)):
                 for item_index in range(len(t.mat[row_index])):
@@ -516,6 +521,7 @@ if __name__ == "__main__":
                 #t.mat[hover[0]][hover[1]] = draw_it
                 #print(hover[0], hover[1])
                 t.mat[hover[0]][hover[1]] = draw_it
+        
         if keys[pygame.K_0]:
             draw_it = 0
         if keys[pygame.K_1]:
@@ -531,6 +537,8 @@ if __name__ == "__main__":
             if player.allowjumping:
                 player.yvel += 10
                 player.allowjumping = False
+        
+
                 '''
         if keys[pygame.K_DOWN]:
             player.y += 3
